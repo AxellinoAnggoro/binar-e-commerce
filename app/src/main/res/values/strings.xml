@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">binar-e-commerce</string>
+    <string name="register">Register</string>
+    <string name="inputName">Input Name</string>
+    <string name="inputEmail">Input Email</string>
+    <string name="inputPassword">Input Password</string>
+    <string name="inputRePassword">Re-Input Password</string>
+    <string name="login">Login</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="pilih_bahasa">Select a Language</string>
+    <string name="don_t_you_have_an_account_sign_up">Don\'t you have an account? Sign Up</string>
 </resources>
