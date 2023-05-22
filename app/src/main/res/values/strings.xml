@@ -10,4 +10,9 @@
     <string name="password">Password</string>
     <string name="pilih_bahasa">Select a Language</string>
     <string name="don_t_you_have_an_account_sign_up">Don\'t you have an account? Sign Up</string>
+    <string name="judul_film">Judul Film</string>
+    <string name="news">News</string>
+    <string name="_22_05_2023">22/05/2023</string>
+    <string name="lorem_ipsum_dolor_sit_amet_consectetur_adipiscing_elit_nulla_eu_magna_aliquet_placerat_tellus_vitae_efficitur_diam_nulla_facilisi_nulla_facilisi_quisque_pulvinar_nisi_quis_tincidunt_lacinia">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla eu magna aliquet, placerat tellus vitae, efficitur diam. Nulla facilisi. Nulla facilisi. Quisque pulvinar nisi quis tincidunt lacinia.</string>
+    <string name="judul_news">Judul News</string>
 </resources>
