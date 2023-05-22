@@ -6,6 +6,29 @@
     android:layout_height="match_parent"
     tools:context=".view.ui.HomeActivity">
 
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/btnProfile"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@drawable/ic_account"
+        android:layout_margin="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.denzcoskun.imageslider.ImageSlider
+        android:id="@+id/imgSlider"
+        android:layout_width="350dp"
+        android:layout_height="200dp"
+        android:background="@drawable/imgslider_rounded"
+        app:layout_constraintTop_toBottomOf="@id/btnProfile"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:iss_auto_cycle="true"
+        app:iss_period="1000"
+        />
+
+
+
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNav"
         android:layout_width="match_parent"
