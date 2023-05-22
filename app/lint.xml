@@ -1,0 +1,5 @@
+<lint>
+    <issue id="HardcodedText" severity="fatal" />
+    <issue id="GradleDependency" severity="ignore"/>
+    <issue id="ContentDescription" severity="ignore"/>
+</lint>
