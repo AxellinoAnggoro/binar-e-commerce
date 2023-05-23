@@ -31,4 +31,10 @@
     <string name="x">x</string>
     <string name="rp100_000">Rp100.000</string>
     <string name="_47">47</string>
+    <string name="history">History</string>
+    <string name="news_update">News Update</string>
+    <string name="news_product">News Product</string>
+    <string name="detail">Detail</string>
+    <string name="product">Product</string>
+    <string name="harga">Harga</string>
 </resources>
