@@ -15,6 +15,9 @@
         android:theme="@style/Theme.Binarecommerce"
         tools:targetApi="31">
         <activity
+            android:name=".view.ui.HistoryActivity"
+            android:exported="false" />
+        <activity
             android:name=".view.ui.CartActivity"
             android:exported="false" />
         <activity

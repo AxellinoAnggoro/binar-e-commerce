@@ -19,4 +19,16 @@
     <string name="favorite">Favorite</string>
     <string name="Cart">Cart</string>
     <string name="account">Account</string>
+    <string name="input_name">input name</string>
+    <string name="input_dob">input_dob</string>
+    <string name="input_address">input address</string>
+    <string name="update">update</string>
+    <string name="profile">Profile</string>
+    <string name="input_username">input username</string>
+    <string name="nama_produk">Nama Produk</string>
+    <string name="rp55_000">Rp55.000</string>
+    <string name="contoh_deskripsi_produk">Contoh deskripsi produk</string>
+    <string name="x">x</string>
+    <string name="rp100_000">Rp100.000</string>
+    <string name="_47">47</string>
 </resources>

@@ -4,11 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.ui.CartActivity"
+    tools:context=".view.ui.HistoryActivity"
     android:layout_margin="20dp">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvCart"
+        android:id="@+id/historyRv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 
@@ -22,5 +22,4 @@
         app:layout_constraintStart_toStartOf="parent"
         app:menu="@menu/menu"
         android:scrollIndicators="left"/>
-
 </RelativeLayout>
