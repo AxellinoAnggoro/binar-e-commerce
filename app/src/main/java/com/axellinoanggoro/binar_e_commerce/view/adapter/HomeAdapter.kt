@@ -32,9 +32,10 @@ class HomeAdapter(private val listProduct: List<GetProductsItem>,
 
                     cvProduct.setOnClickListener {
                         val bundle = Bundle().apply {
-                            putInt("ID",itemProduct.idProduct.toInt())
+                            putParcelable("ID",itemProduct)
                         }
                         val intent = Intent(context,DetailActivity::class.java)
+                        intent.putExtras(bundle)
                         context.startActivity(intent)
                     }
                 }

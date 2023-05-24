@@ -1,8 +1,11 @@
 package com.axellinoanggoro.binar_e_commerce.model
 
 
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import kotlinx.android.parcel.Parcelize
 
+@Parcelize
 data class GetProductsItem(
     @SerializedName("category_productId")
     val categoryProductId: String,
@@ -18,4 +21,4 @@ data class GetProductsItem(
     val price: String,
     @SerializedName("product_image")
     val productImage: String
-)
+):Parcelable
