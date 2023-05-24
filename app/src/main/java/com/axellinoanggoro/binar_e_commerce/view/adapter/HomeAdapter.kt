@@ -1,15 +1,28 @@
 package com.axellinoanggoro.binar_e_commerce.view.adapter
 
+import android.app.TimePickerDialog.OnTimeSetListener
+import android.content.Intent
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.AdapterView.OnItemClickListener
+import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.Adapter
 import com.axellinoanggoro.binar_e_commerce.databinding.ItemProductBinding
+import com.axellinoanggoro.binar_e_commerce.model.DataProduct
 import com.axellinoanggoro.binar_e_commerce.model.GetProductsItem
+import com.axellinoanggoro.binar_e_commerce.view.ui.DetailActivity
 import com.axellinoanggoro.binar_e_commerce.view.ui.HomeActivity
 import com.bumptech.glide.Glide
 
-class HomeAdapter(private val listProduct: List<GetProductsItem>, homeActivity: HomeActivity) : RecyclerView.Adapter<HomeAdapter.ViewHolder>() {
+class HomeAdapter(private val listProduct: List<GetProductsItem>,
+
+                  homeActivity: HomeActivity) :
+    RecyclerView.Adapter<HomeAdapter.ViewHolder>() {
+
+
+
     class ViewHolder(var binding : ItemProductBinding): RecyclerView.ViewHolder(binding.root){
         fun bindProduct(itemProduct : GetProductsItem){
             with(itemView){
@@ -17,6 +30,13 @@ class HomeAdapter(private val listProduct: List<GetProductsItem>, homeActivity: 
                     binding.name.text = itemProduct.name
                     Glide.with(itemView).load(itemProduct.productImage).into(binding.photo)
 
+                    cvProduct.setOnClickListener {
+                        val bundle = Bundle().apply {
+                            putInt("ID",itemProduct.idProduct.toInt())
+                        }
+                        val intent = Intent(context,DetailActivity::class.java)
+                        context.startActivity(intent)
+                    }
                 }
             }
         }
