@@ -1,17 +1,20 @@
 package com.axellinoanggoro.binar_e_commerce.view.ui
 
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.axellinoanggoro.binar_e_commerce.R
 import com.axellinoanggoro.binar_e_commerce.databinding.ActivityHomeBinding
+import com.axellinoanggoro.binar_e_commerce.view.adapter.HomeAdapter
+import com.axellinoanggoro.binar_e_commerce.viewmodel.HomeViewModel
 import com.denzcoskun.imageslider.constants.ScaleTypes
 import com.denzcoskun.imageslider.models.SlideModel
-import com.google.android.material.bottomnavigation.BottomNavigationView
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class HomeActivity : AppCompatActivity() {
+
 
     lateinit var binding : ActivityHomeBinding
     val imageList = ArrayList<SlideModel>()
@@ -25,6 +28,15 @@ class HomeActivity : AppCompatActivity() {
         imageList.add(SlideModel(R.drawable.test2))
         imageList.add(SlideModel(R.drawable.test3))
         binding.imgSlider.setImageList(imageList, ScaleTypes.FIT)
+
+        val viewModelProduct = ViewModelProvider(this)[HomeViewModel::class.java]
+        viewModelProduct.setProduct()
+        viewModelProduct._dataProduct.observe(this){
+            if(it != null){
+                binding.rvProduct.layoutManager= LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false)
+                binding.rvProduct.adapter = HomeAdapter(it,this@HomeActivity)
+            }
+        }
 
 
     }
