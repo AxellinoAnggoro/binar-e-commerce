@@ -2,7 +2,9 @@ package com.axellinoanggoro.binar_e_commerce.network
 
 import com.axellinoanggoro.binar_e_commerce.model.*
 import retrofit2.Call
+import retrofit2.http.Body
 import retrofit2.http.GET
+import retrofit2.http.POST
 import retrofit2.http.Path
 
 interface ApiService {
@@ -11,6 +13,9 @@ interface ApiService {
 
     @GET("users")
     fun getAllUsers(): Call<List<GetUsersItem>>
+
+    @POST("users")
+    fun postNewUsers(@Body request : DataUsers) : Call<GetUsersItem>
 
     @GET("sliders/{id}")
     fun getSliderById(
