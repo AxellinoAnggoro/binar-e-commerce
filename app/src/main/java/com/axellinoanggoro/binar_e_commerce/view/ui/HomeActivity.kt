@@ -7,15 +7,17 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.axellinoanggoro.binar_e_commerce.R
 import com.axellinoanggoro.binar_e_commerce.databinding.ActivityHomeBinding
+import com.axellinoanggoro.binar_e_commerce.model.DataNews
 import com.axellinoanggoro.binar_e_commerce.model.DataProduct
 import com.axellinoanggoro.binar_e_commerce.view.adapter.HomeAdapter
+import com.axellinoanggoro.binar_e_commerce.view.adapter.NewsAdapter
 import com.axellinoanggoro.binar_e_commerce.viewmodel.HomeViewModel
 import com.denzcoskun.imageslider.constants.ScaleTypes
 import com.denzcoskun.imageslider.models.SlideModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class HomeActivity : AppCompatActivity(), HomeAdapter.OnItemClickListener {
+class HomeActivity : AppCompatActivity(), HomeAdapter.OnItemClickListener, NewsAdapter.OnItemClickListener {
 
 
     lateinit var binding: ActivityHomeBinding
@@ -32,7 +34,9 @@ class HomeActivity : AppCompatActivity(), HomeAdapter.OnItemClickListener {
         binding.imgSlider.setImageList(imageList, ScaleTypes.FIT)
 
         val viewModelProduct = ViewModelProvider(this)[HomeViewModel::class.java]
+        val viewModelNews = ViewModelProvider(this)[HomeViewModel::class.java]
         viewModelProduct.setProduct()
+        viewModelNews.getNews()
         viewModelProduct._dataProduct.observe(this) {
             if (it != null) {
                 binding.rvProduct.layoutManager =
@@ -40,13 +44,24 @@ class HomeActivity : AppCompatActivity(), HomeAdapter.OnItemClickListener {
                 binding.rvProduct.adapter = HomeAdapter(it, this@HomeActivity)
             }
         }
-
+        viewModelNews.liveDataNews.observe(this){
+            if (it != null){
+                binding.rvNews.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
+                binding.rvNews.adapter = NewsAdapter(it, this)
+            }
+        }
 
     }
 
     override fun onItemClick(data: DataProduct) {
         val intent = Intent(this, DetailActivity::class.java)
         intent.putExtra("data_product", data)
+        startActivity(intent)
+    }
+
+    override fun onItemClick(data: DataNews) {
+        val intent = Intent(this, DetailNewsActivity::class.java)
+        intent.putExtra("data_news", data)
         startActivity(intent)
     }
 

@@ -8,7 +8,7 @@ import retrofit2.http.POST
 import retrofit2.http.Path
 
 interface ApiService {
-    @GET("news")
+    @GET("news_update")
     fun getAllNews(): Call<List<GetNewsUpdateItem>>
 
     @GET("users")
