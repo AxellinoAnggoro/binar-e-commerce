@@ -16,28 +16,31 @@ import com.axellinoanggoro.binar_e_commerce.view.ui.DetailActivity
 import com.axellinoanggoro.binar_e_commerce.view.ui.HomeActivity
 import com.bumptech.glide.Glide
 
-class HomeAdapter(private val listProduct: List<GetProductsItem>,
-
-                  homeActivity: HomeActivity) :
+class HomeAdapter(
+    private val listProduct: List<GetProductsItem>,
+    private val listener : OnItemClickListener
+) :
     RecyclerView.Adapter<HomeAdapter.ViewHolder>() {
 
+    interface OnItemClickListener {
+        fun onItemClick(data: DataProduct)
+    }
 
-
-    class ViewHolder(var binding : ItemProductBinding): RecyclerView.ViewHolder(binding.root){
-        fun bindProduct(itemProduct : GetProductsItem){
-            with(itemView){
+    inner class ViewHolder(var binding: ItemProductBinding) : RecyclerView.ViewHolder(binding.root) {
+        fun bindProduct(itemProduct: GetProductsItem) {
+            with(itemView) {
                 binding.apply {
                     binding.name.text = itemProduct.name
                     Glide.with(itemView).load(itemProduct.productImage).into(binding.photo)
 
-                    cvProduct.setOnClickListener {
-                        val bundle = Bundle().apply {
-                            putParcelable("ID",itemProduct)
-                        }
-                        val intent = Intent(context,DetailActivity::class.java)
-                        intent.putExtras(bundle)
-                        context.startActivity(intent)
-                    }
+//                    cvProduct.setOnClickListener {
+//                        val bundle = Bundle().apply {
+//                            putParcelable("ID", itemProduct)
+//                        }
+//                        val intent = Intent(context, DetailActivity::class.java)
+//                        intent.putExtras(bundle)
+//                        context.startActivity(intent)
+//                    }
                 }
             }
         }
@@ -45,7 +48,7 @@ class HomeAdapter(private val listProduct: List<GetProductsItem>,
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HomeAdapter.ViewHolder {
-        val view = ItemProductBinding.inflate(LayoutInflater.from(parent.context),parent,false)
+        val view = ItemProductBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return ViewHolder(view)
     }
 
@@ -53,6 +56,14 @@ class HomeAdapter(private val listProduct: List<GetProductsItem>,
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.bindProduct(listProduct[position])
+        holder.itemView.setOnClickListener{
+            val image = listProduct[position].productImage
+            val name = listProduct[position].name
+            val price = listProduct[position].price
+            val detailProduct = DataProduct(name, price, image)
+
+            listener.onItemClick(detailProduct)
+        }
     }
 
 

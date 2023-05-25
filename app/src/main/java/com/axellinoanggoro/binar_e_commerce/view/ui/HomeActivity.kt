@@ -1,11 +1,13 @@
 package com.axellinoanggoro.binar_e_commerce.view.ui
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.axellinoanggoro.binar_e_commerce.R
 import com.axellinoanggoro.binar_e_commerce.databinding.ActivityHomeBinding
+import com.axellinoanggoro.binar_e_commerce.model.DataProduct
 import com.axellinoanggoro.binar_e_commerce.view.adapter.HomeAdapter
 import com.axellinoanggoro.binar_e_commerce.viewmodel.HomeViewModel
 import com.denzcoskun.imageslider.constants.ScaleTypes
@@ -13,10 +15,10 @@ import com.denzcoskun.imageslider.models.SlideModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class HomeActivity : AppCompatActivity() {
+class HomeActivity : AppCompatActivity(), HomeAdapter.OnItemClickListener {
 
 
-    lateinit var binding : ActivityHomeBinding
+    lateinit var binding: ActivityHomeBinding
     val imageList = ArrayList<SlideModel>()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,14 +33,21 @@ class HomeActivity : AppCompatActivity() {
 
         val viewModelProduct = ViewModelProvider(this)[HomeViewModel::class.java]
         viewModelProduct.setProduct()
-        viewModelProduct._dataProduct.observe(this){
-            if(it != null){
-                binding.rvProduct.layoutManager= LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false)
-                binding.rvProduct.adapter = HomeAdapter(it,this@HomeActivity)
+        viewModelProduct._dataProduct.observe(this) {
+            if (it != null) {
+                binding.rvProduct.layoutManager =
+                    LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
+                binding.rvProduct.adapter = HomeAdapter(it, this@HomeActivity)
             }
         }
 
 
+    }
+
+    override fun onItemClick(data: DataProduct) {
+        val intent = Intent(this, DetailActivity::class.java)
+        intent.putExtra("data_product", data)
+        startActivity(intent)
     }
 
 //    private val onNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
