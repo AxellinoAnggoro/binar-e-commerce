@@ -22,6 +22,9 @@ interface ApiService {
         @Path("id") id : Int,
     ):Call<List<GetSlidersItem>>
 
+    @GET("sliders")
+    fun getAllSliders() : Call<List<GetSlidersItem>>
+
     //Product
     @GET("category_product/{id}/products")
     suspend fun getProduct(@Path("id") id: Int): GetProducts

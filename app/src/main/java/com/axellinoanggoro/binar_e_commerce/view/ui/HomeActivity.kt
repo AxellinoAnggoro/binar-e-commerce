@@ -11,6 +11,7 @@ import com.axellinoanggoro.binar_e_commerce.model.DataNews
 import com.axellinoanggoro.binar_e_commerce.model.DataProduct
 import com.axellinoanggoro.binar_e_commerce.view.adapter.HomeAdapter
 import com.axellinoanggoro.binar_e_commerce.view.adapter.NewsAdapter
+import com.axellinoanggoro.binar_e_commerce.view.adapter.SliderAdapter
 import com.axellinoanggoro.binar_e_commerce.viewmodel.HomeViewModel
 import com.denzcoskun.imageslider.constants.ScaleTypes
 import com.denzcoskun.imageslider.models.SlideModel
@@ -28,15 +29,25 @@ class HomeActivity : AppCompatActivity(), HomeAdapter.OnItemClickListener, NewsA
         setContentView(binding.root)
 
 //        binding.bottomNav.setOnNavigationItemSelectedListener(onNavigationItemSelectedListener)
-        imageList.add(SlideModel(R.drawable.test1))
-        imageList.add(SlideModel(R.drawable.test2))
-        imageList.add(SlideModel(R.drawable.test3))
-        binding.imgSlider.setImageList(imageList, ScaleTypes.FIT)
+//        imageList.add(SlideModel(R.drawable.test1))
+//        imageList.add(SlideModel(R.drawable.test2))
+//        imageList.add(SlideModel(R.drawable.test3))
+//        binding.imgSlider.setImageList(imageList, ScaleTypes.FIT)
 
+        val viewModelSlider = ViewModelProvider(this)[HomeViewModel::class.java]
         val viewModelProduct = ViewModelProvider(this)[HomeViewModel::class.java]
         val viewModelNews = ViewModelProvider(this)[HomeViewModel::class.java]
+
+        viewModelSlider.getSliders()
         viewModelProduct.setProduct()
         viewModelNews.getNews()
+
+        viewModelSlider.liveDataSlider.observe(this){
+            if (it != null) {
+               binding.imgSlider.adapter = SliderAdapter(it)
+            }
+        }
+
         viewModelProduct._dataProduct.observe(this) {
             if (it != null) {
                 binding.rvProduct.layoutManager =

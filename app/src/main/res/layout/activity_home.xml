@@ -10,33 +10,45 @@
         android:id="@+id/btnProfile"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:src="@drawable/ic_account"
         android:layout_margin="20dp"
+        android:src="@drawable/ic_account"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <com.denzcoskun.imageslider.ImageSlider
+    <!--    <com.denzcoskun.imageslider.ImageSlider-->
+    <!--        android:id="@+id/imgSlider"-->
+    <!--        android:layout_width="350dp"-->
+    <!--        android:layout_height="200dp"-->
+    <!--        android:background="@drawable/imgslider_rounded"-->
+    <!--        app:layout_constraintTop_toBottomOf="@id/btnProfile"-->
+    <!--        app:layout_constraintEnd_toEndOf="parent"-->
+    <!--        app:layout_constraintStart_toStartOf="parent"-->
+    <!--        android:layout_margin="10dp"-->
+    <!--        app:iss_auto_cycle="true"-->
+    <!--        app:iss_period="1000" />-->
+
+    <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/imgSlider"
-        android:layout_width="350dp"
-        android:layout_height="200dp"
-        android:background="@drawable/imgslider_rounded"
-        app:layout_constraintTop_toBottomOf="@id/btnProfile"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:layout_margin="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:layout_margin="10dp"
+        app:layout_constraintTop_toBottomOf="@id/btnProfile"
         app:iss_auto_cycle="true"
-        app:iss_period="1000" />
+        app:iss_period="1000"
+        app:iss_delay="1000"/>
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/tvNewsUpdate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_margin="20dp"
         android:text="@string/news_update"
         android:textColor="@color/hitam"
         android:textSize="16sp"
-        app:layout_constraintTop_toBottomOf="@id/imgSlider"
         app:layout_constraintStart_toStartOf="parent"
-        android:layout_margin="20dp"/>
+        app:layout_constraintTop_toBottomOf="@id/imgSlider" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvNews"
@@ -53,12 +65,12 @@
         android:id="@+id/tvNewsProduct"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_margin="20dp"
         android:text="@string/news_product"
         android:textColor="@color/hitam"
         android:textSize="16sp"
-        android:layout_margin="20dp"
-        app:layout_constraintTop_toBottomOf="@id/rvNews"
-        app:layout_constraintStart_toStartOf="parent"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/rvNews" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvProduct"
@@ -69,18 +81,18 @@
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        tools:listitem="@layout/item_product"
-        app:layout_constraintTop_toBottomOf="@id/tvNewsProduct" />
+        app:layout_constraintTop_toBottomOf="@id/tvNewsProduct"
+        tools:listitem="@layout/item_product" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNav"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:layout_alignParentBottom="true"
+        android:scrollIndicators="left"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:menu="@menu/menu"
-        android:scrollIndicators="left"/>
+        app:menu="@menu/menu" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
