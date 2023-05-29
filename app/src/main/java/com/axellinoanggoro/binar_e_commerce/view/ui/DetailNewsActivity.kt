@@ -1,5 +1,6 @@
 package com.axellinoanggoro.binar_e_commerce.view.ui
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.axellinoanggoro.binar_e_commerce.databinding.ActivityDetailNewsBinding
@@ -15,6 +16,10 @@ class DetailNewsActivity : AppCompatActivity() {
 
         val data = intent.getParcelableExtra<DataNews>("data_news")
         setDetail(data)
+
+        binding.imageView.setOnClickListener {
+            startActivity(Intent(this,HomeActivity::class.java))
+        }
     }
 
     private fun setDetail(data: DataNews?) {

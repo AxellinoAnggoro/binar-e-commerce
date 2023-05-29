@@ -25,6 +25,10 @@ class DetailActivity : AppCompatActivity() {
 
         val data = intent.getParcelableExtra<DataProduct>("data_product")
         setDetail(data)
+
+        binding.imageView.setOnClickListener {
+            startActivity(Intent(this,HomeActivity::class.java))
+        }
     }
 
     private fun setDetail(data:DataProduct?){
