@@ -6,6 +6,24 @@
     android:layout_height="match_parent"
     tools:context=".view.ui.HomeActivity">
 
+    <ScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+            <LinearLayout
+                android:id="@+id/linear_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintTop_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent">
+
+
+
     <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/btnProfile"
         android:layout_width="50dp"
@@ -13,7 +31,8 @@
         android:layout_margin="20dp"
         android:src="@drawable/ic_account"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_gravity="end"/>
 
     <!--    <com.denzcoskun.imageslider.ImageSlider-->
     <!--        android:id="@+id/imgSlider"-->
@@ -27,6 +46,7 @@
     <!--        app:iss_auto_cycle="true"-->
     <!--        app:iss_period="1000" />-->
 
+
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/imgSlider"
         android:layout_width="match_parent"
@@ -39,6 +59,7 @@
         app:iss_period="1000"
         app:iss_delay="1000"/>
 
+
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/tvNewsUpdate"
         android:layout_width="wrap_content"
@@ -46,9 +67,9 @@
         android:layout_margin="20dp"
         android:text="@string/news_update"
         android:textColor="@color/hitam"
-        android:textSize="16sp"
+        android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/imgSlider" />
+        app:layout_constraintTop_toBottomOf="@id/linear_layout" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvNews"
@@ -68,7 +89,7 @@
         android:layout_margin="20dp"
         android:text="@string/news_product"
         android:textColor="@color/hitam"
-        android:textSize="16sp"
+        android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/rvNews" />
 
@@ -83,15 +104,17 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tvNewsProduct"
         tools:listitem="@layout/item_product" />
+    </LinearLayout>
 
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottomNav"
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:scrollIndicators="left"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:menu="@menu/menu" />
-
+    </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>
+
+<!--<com.google.android.material.bottomnavigation.BottomNavigationView-->
+<!--android:id="@+id/bottomNav"-->
+<!--android:layout_width="match_parent"-->
+<!--android:layout_height="60dp"-->
+<!--android:scrollIndicators="left"-->
+<!--app:layout_constraintBottom_toBottomOf="parent"-->
+<!--app:layout_constraintEnd_toEndOf="parent"-->
+<!--app:layout_constraintStart_toStartOf="parent"-->
+<!--app:menu="@menu/menu" />-->
