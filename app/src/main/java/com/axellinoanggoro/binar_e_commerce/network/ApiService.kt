@@ -3,6 +3,7 @@ package com.axellinoanggoro.binar_e_commerce.network
 import com.axellinoanggoro.binar_e_commerce.model.*
 import retrofit2.Call
 import retrofit2.http.Body
+import retrofit2.http.DELETE
 import retrofit2.http.GET
 import retrofit2.http.POST
 import retrofit2.http.Path
@@ -42,6 +43,11 @@ interface ApiService {
     ) : Call<List<GetCartItem>>
     @POST("users/{id}/cart")
     fun postNewCart(@Body request : GetProductsItem) : Call<GetCartItem>
+    @DELETE("users/{id}/cart/{cartId}")
+    fun deleteCartById(
+        @Path("id") id: String,
+        @Path("cartId") cartId : String
+    ) : Call<GetCartItem>
 
 
 

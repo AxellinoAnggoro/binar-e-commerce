@@ -29,7 +29,7 @@ class HomeActivity : AppCompatActivity(), HomeAdapter.OnItemClickListener, NewsA
         setContentView(binding.root)
 
         binding.btnProfile.setOnClickListener {
-            startActivity(Intent(this, ProfileActivity::class.java))
+            startActivity(Intent(this, CartActivity::class.java))
         }
 
 //        binding.bottomNav.setOnNavigationItemSelectedListener(onNavigationItemSelectedListener)
