@@ -1,6 +1,8 @@
 package com.axellinoanggoro.binar_e_commerce.viewmodel
 
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.provider.ContactsContract.CommonDataKinds.Email
 import android.widget.Toast
 import androidx.core.content.ContextCompat.startActivity
@@ -16,8 +18,9 @@ import retrofit2.Response
 import javax.inject.Inject
 
 @HiltViewModel
-class LoginViewModel @Inject constructor(private val api: ApiService) : ViewModel() {
+class LoginViewModel @Inject constructor(private val api: ApiService, private val context: Context) : ViewModel() {
     val loginStatus: MutableLiveData<Boolean> = MutableLiveData()
+    private lateinit var pref : SharedPreferences
 
     fun authenticateLogin(email: String, password: String) {
         api.getAllUsers().enqueue(object : Callback<List<GetUsersItem>> {
@@ -29,6 +32,7 @@ class LoginViewModel @Inject constructor(private val api: ApiService) : ViewMode
                     val getCreds = response.body()
                     val auth = getCreds?.find { it.email == email && it.password == password }
                     if (auth != null) {
+                        storeLoginData(auth.idUsers, auth.name, auth.email, auth.password)
                         loginStatus.postValue(true)
                     } else {
                         loginStatus.postValue(false)
@@ -41,5 +45,15 @@ class LoginViewModel @Inject constructor(private val api: ApiService) : ViewMode
             }
 
         })
+    }
+
+    private fun storeLoginData(id : String, name: String, email: String, password: String){
+        pref = context.getSharedPreferences("login_data", Context.MODE_PRIVATE)
+        val save = pref.edit()
+        save.putString("id", id)
+        save.putString("name", name)
+        save.putString("email", email)
+        save.putString("password", password)
+        save.apply()
     }
 }

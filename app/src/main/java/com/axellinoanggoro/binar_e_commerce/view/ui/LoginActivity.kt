@@ -21,6 +21,7 @@ import retrofit2.Response
 class LoginActivity : AppCompatActivity() {
 
     lateinit var binding: ActivityLoginBinding
+    lateinit var loginVm : LoginViewModel
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityLoginBinding.inflate(layoutInflater)
@@ -30,7 +31,7 @@ class LoginActivity : AppCompatActivity() {
             startActivity(Intent(this, RegisterActivity::class.java))
         }
 
-        val loginVm = ViewModelProvider(this)[LoginViewModel::class.java]
+        loginVm = ViewModelProvider(this)[LoginViewModel::class.java]
         loginVm.loginStatus.observe(this) { success ->
             if (success) {
                 Toast.makeText(this, "Login Success", Toast.LENGTH_SHORT).show()

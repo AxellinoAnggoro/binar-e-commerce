@@ -1,5 +1,7 @@
 package com.axellinoanggoro.binar_e_commerce.network
 
+import android.app.Application
+import android.content.Context
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -39,6 +41,12 @@ object ApiClient {
     @Provides
     fun provideNewsApi(retrofit: Retrofit): ApiService =
         retrofit.create(ApiService::class.java)
+
+    @Singleton
+    @Provides
+    fun provideContext(application: Application): Context {
+        return application
+    }
 
 //    val instance : ApiService by lazy {
 //        val retrofit= Retrofit.Builder()

@@ -1,6 +1,8 @@
 package com.axellinoanggoro.binar_e_commerce.view.ui
 
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.axellinoanggoro.binar_e_commerce.R
@@ -12,13 +14,17 @@ import dagger.hilt.android.AndroidEntryPoint
 class ProfileActivity : AppCompatActivity() {
 
     lateinit var binding : ActivityProfileBinding
+    lateinit var pref : SharedPreferences
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityProfileBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-//        binding.bottomNav.setOnNavigationItemSelectedListener(onNavigationItemSelectedListener)
+        pref = getSharedPreferences("login_data", Context.MODE_PRIVATE)
+        val id = pref.getString("id","")
 
+        binding.profileTv.text = id
+//        binding.bottomNav.setOnNavigationItemSelectedListener(onNavigationItemSelectedListener)
     }
 //    private val onNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
 //        when (item.itemId) {

@@ -28,6 +28,10 @@ class HomeActivity : AppCompatActivity(), HomeAdapter.OnItemClickListener, NewsA
         binding = ActivityHomeBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        binding.btnProfile.setOnClickListener {
+            startActivity(Intent(this, ProfileActivity::class.java))
+        }
+
 //        binding.bottomNav.setOnNavigationItemSelectedListener(onNavigationItemSelectedListener)
 //        imageList.add(SlideModel(R.drawable.test1))
 //        imageList.add(SlideModel(R.drawable.test2))

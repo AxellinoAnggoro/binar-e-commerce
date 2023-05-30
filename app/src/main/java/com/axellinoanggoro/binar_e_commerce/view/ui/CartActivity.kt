@@ -1,7 +1,9 @@
 package com.axellinoanggoro.binar_e_commerce.view.ui
 
 
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.axellinoanggoro.binar_e_commerce.R
@@ -13,10 +15,14 @@ import dagger.hilt.android.AndroidEntryPoint
 class CartActivity : AppCompatActivity() {
 
     lateinit var binding : ActivityCartBinding
+    lateinit var pref : SharedPreferences
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityCartBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        pref = getSharedPreferences("login_data", Context.MODE_PRIVATE)
+
 //        binding.bottomNav.setOnNavigationItemSelectedListener(onNavigationItemSelectedListener)
 
     }
