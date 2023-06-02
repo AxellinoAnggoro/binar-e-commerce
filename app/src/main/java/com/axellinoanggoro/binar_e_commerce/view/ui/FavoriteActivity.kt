@@ -35,6 +35,26 @@ class FavoriteActivity : AppCompatActivity(), FavAdapter.OnItemClickListener {
         binding = ActivityFavoriteBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        binding.bottomNav.setOnNavigationItemSelectedListener { item ->
+            when (item.itemId) {
+                R.id.account -> {
+                    startActivity(Intent(this,ProfileActivity::class.java))
+                    true
+                }
+                R.id.history -> {
+                    // Logika untuk item 2
+                    startActivity(Intent(this,HistoryActivity::class.java))
+                    true
+                }
+                R.id.home -> {
+                    // Logika untuk item 3
+                    startActivity(Intent(this,HomeActivity::class.java))
+                    true
+                }
+                else -> false
+            }
+        }
+
         pref = getSharedPreferences("login_data", Context.MODE_PRIVATE)
         val userId = pref.getString("id", "").toString()
 
@@ -45,8 +65,6 @@ class FavoriteActivity : AppCompatActivity(), FavAdapter.OnItemClickListener {
                 LinearLayoutManager.VERTICAL,false)
             binding.rvFav.adapter = FavAdapter(it,this)
         }
-//        binding.bottomNav.setOnNavigationItemSelectedListener(onNavigationItemSelectedListener)
-
     }
 
     override fun onItemClick(data: DataProduct) {

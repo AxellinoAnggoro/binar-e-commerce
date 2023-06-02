@@ -23,37 +23,25 @@ class ProfileActivity : AppCompatActivity() {
         pref = getSharedPreferences("login_data", Context.MODE_PRIVATE)
         val id = pref.getString("id","")
 
-        binding.profileTv.text = id
+        binding.bottomNav.setOnNavigationItemSelectedListener { item ->
+            when (item.itemId) {
+                R.id.home -> {
+                    startActivity(Intent(this,HomeActivity::class.java))
+                    true
+                }
+                R.id.history -> {
+                    // Logika untuk item 2
+                    startActivity(Intent(this,HistoryActivity::class.java))
+                    true
+                }
+                R.id.favorite -> {
+                    // Logika untuk item 3
+                    startActivity(Intent(this,FavoriteActivity::class.java))
+                    true
+                }
+                else -> false
+            }
+        }
 
-//        if (id.isNullOrEmpty()){
-//            startActivity(Intent(this,LoginActivity::class.java))
-//            finish()
-//        }
-//        binding.bottomNav.setOnNavigationItemSelectedListener(onNavigationItemSelectedListener)
     }
-//    private val onNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
-//        when (item.itemId) {
-//            R.id.home -> {
-//                val intent = Intent(this, HomeActivity::class.java)
-//                startActivity(intent)
-//                return@OnNavigationItemSelectedListener true
-//            }
-//            R.id.favorite -> {
-//                val intent = Intent(this, FavoriteActivity::class.java)
-//                startActivity(intent)
-//                return@OnNavigationItemSelectedListener true
-//            }
-//            R.id.cart -> {
-//                val intent = Intent(this, CartActivity::class.java)
-//                startActivity(intent)
-//                return@OnNavigationItemSelectedListener true
-//            }
-//            R.id.account ->{
-//                val intent = Intent(this,ProfileActivity::class.java)
-//                startActivity(intent)
-//                return@OnNavigationItemSelectedListener true
-//            }
-//        }
-//        false
-//    }
 }
