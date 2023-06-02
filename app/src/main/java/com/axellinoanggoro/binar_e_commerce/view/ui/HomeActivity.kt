@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.MenuItem
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.axellinoanggoro.binar_e_commerce.R
@@ -16,6 +17,7 @@ import com.axellinoanggoro.binar_e_commerce.view.adapter.SliderAdapter
 import com.axellinoanggoro.binar_e_commerce.viewmodel.HomeViewModel
 import com.denzcoskun.imageslider.constants.ScaleTypes
 import com.denzcoskun.imageslider.models.SlideModel
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -31,6 +33,26 @@ class HomeActivity : AppCompatActivity(), HomeAdapter.OnItemClickListener, NewsA
 
         binding.btnProfile.setOnClickListener {
             startActivity(Intent(this, ProfileActivity::class.java))
+        }
+
+        binding.bottomNav.setOnNavigationItemSelectedListener { item ->
+            when (item.itemId) {
+                R.id.account -> {
+                    startActivity(Intent(this,ProfileActivity::class.java))
+                    true
+                }
+                R.id.history -> {
+                    // Logika untuk item 2
+                    startActivity(Intent(this,HistoryActivity::class.java))
+                    true
+                }
+                R.id.favorite -> {
+                    // Logika untuk item 3
+                    startActivity(Intent(this,FavoriteActivity::class.java))
+                    true
+                }
+                else -> false
+            }
         }
 
 //        binding.bottomNav.setOnNavigationItemSelectedListener(onNavigationItemSelectedListener)
@@ -49,7 +71,7 @@ class HomeActivity : AppCompatActivity(), HomeAdapter.OnItemClickListener, NewsA
 
         viewModelSlider.liveDataSlider.observe(this){
             if (it != null) {
-               binding.imgSlider.adapter = SliderAdapter(it)
+                binding.imgSlider.adapter = SliderAdapter(it)
             }
         }
 
