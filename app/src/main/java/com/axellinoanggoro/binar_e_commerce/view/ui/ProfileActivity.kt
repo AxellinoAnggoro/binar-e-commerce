@@ -24,6 +24,11 @@ class ProfileActivity : AppCompatActivity() {
         val id = pref.getString("id","")
 
         binding.profileTv.text = id
+
+//        if (id.isNullOrEmpty()){
+//            startActivity(Intent(this,LoginActivity::class.java))
+//            finish()
+//        }
 //        binding.bottomNav.setOnNavigationItemSelectedListener(onNavigationItemSelectedListener)
     }
 //    private val onNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->

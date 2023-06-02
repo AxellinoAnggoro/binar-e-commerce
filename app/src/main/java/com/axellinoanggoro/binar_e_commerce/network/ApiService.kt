@@ -50,5 +50,9 @@ interface ApiService {
     ) : Call<GetCartItem>
 
 
-
+    //History
+    @GET("users/{id}/transhistory")
+    fun getHistoryById(
+        @Path("id") id: String
+    ) : Call<List<GetTransHistoryItem>>
 }

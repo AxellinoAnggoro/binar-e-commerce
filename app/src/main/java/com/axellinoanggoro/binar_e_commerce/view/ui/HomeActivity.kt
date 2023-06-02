@@ -1,5 +1,6 @@
 package com.axellinoanggoro.binar_e_commerce.view.ui
 
+import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -29,7 +30,7 @@ class HomeActivity : AppCompatActivity(), HomeAdapter.OnItemClickListener, NewsA
         setContentView(binding.root)
 
         binding.btnProfile.setOnClickListener {
-            startActivity(Intent(this, CartActivity::class.java))
+            startActivity(Intent(this, ProfileActivity::class.java))
         }
 
 //        binding.bottomNav.setOnNavigationItemSelectedListener(onNavigationItemSelectedListener)

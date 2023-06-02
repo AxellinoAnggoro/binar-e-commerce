@@ -60,14 +60,11 @@ class CartActivity : AppCompatActivity(), CartAdapter.OnItemClickListener {
                 if (response.isSuccessful) {
                     val deletedCartItem = response.body()
                     if (deletedCartItem != null) {
-                        // Item deleted successfully, handle the response as needed
                         Toast.makeText(this@CartActivity, "Item deleted successfully", Toast.LENGTH_SHORT).show()
                     } else {
-                        // Response body is null, handle the error
                         Toast.makeText(this@CartActivity, "Failed to delete item", Toast.LENGTH_SHORT).show()
                     }
                 } else {
-                    // Failed to delete item, handle the error
                     Toast.makeText(this@CartActivity, "Failed to delete item", Toast.LENGTH_SHORT).show()
                 }
             }
