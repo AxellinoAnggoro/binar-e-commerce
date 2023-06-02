@@ -55,4 +55,15 @@ interface ApiService {
     fun getHistoryById(
         @Path("id") id: String
     ) : Call<List<GetTransHistoryItem>>
+
+    //Fav
+    @GET("users/{id}/favourite")
+    fun getFavById(
+        @Path("id") id: String
+    ) : Call<List<GetFavouriteItem>>
+    @DELETE("users/{id}/favourite/{favId}")
+    fun deleteFavById(
+        @Path("id") id: String,
+        @Path("favId") cartId : String
+    ) : Call<GetFavouriteItem>
 }
