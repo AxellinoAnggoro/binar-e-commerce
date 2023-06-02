@@ -9,7 +9,9 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.axellinoanggoro.binar_e_commerce.databinding.ActivityHistoryBinding
 import com.axellinoanggoro.binar_e_commerce.view.adapter.HistoryAdapter
 import com.axellinoanggoro.binar_e_commerce.viewmodel.HistoryViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class HistoryActivity : AppCompatActivity() {
     lateinit var binding : ActivityHistoryBinding
     lateinit var pref : SharedPreferences
